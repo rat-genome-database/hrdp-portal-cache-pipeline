@@ -1,0 +1,7 @@
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <bean id="manager" class="edu.mcw.rgd.hrdpPortalManager">
+        <property name="version" value="--hrdp portal cache pipeline  -- build April 29, 2024" />
+    </bean>
+</beans>

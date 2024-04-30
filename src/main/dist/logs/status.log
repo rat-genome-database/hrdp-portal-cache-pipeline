@@ -1,0 +1,117 @@
+2024-04-30 15:15:11 INFO [status] - --hrdp portal cache pipeline  -- build April 29, 2024
+2024-04-30 15:15:11 INFO [status] -    started at 2024-04-30 15:15:11
+2024-04-30 15:15:11 INFO [status] - 
+2024-04-30 15:15:11 INFO [status] - started inserting classic inbred strains
+2024-04-30 15:15:21 INFO [status] - HRDP strain of rgdId: 7364991 and symbol: ACI/EurMcwi and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:22 INFO [status] - HRDP strain of rgdId: 10000 and symbol: ACI/N and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:22 INFO [status] - HRDP strain of rgdId: 156368567 and symbol: BDIX/NemOdaMcwi and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:22 INFO [status] - HRDP strain of rgdId: 38676495 and symbol: BN-<i>Lx</i>/CubMcwi and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:23 INFO [status] - HRDP strain of rgdId: 737972 and symbol: BN/Crl and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:23 INFO [status] - HRDP strain of rgdId: 61498 and symbol: BN/NHsdMcwi and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:23 INFO [status] - HRDP strain of rgdId: 5508393 and symbol: BN/RijHsd and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:24 INFO [status] - HRDP strain of rgdId: 61115 and symbol: BN/SsN and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:24 INFO [status] - HRDP strain of rgdId: 156403001 and symbol: BUF/MnaMcwi and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:24 INFO [status] - HRDP strain of rgdId: 60986 and symbol: BUF/N and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:24 INFO [status] - HRDP strain of rgdId: 734475 and symbol: DA/OlaHsd and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:25 INFO [status] - HRDP strain of rgdId: 734478 and symbol: F344/DuCrl and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:26 INFO [status] - HRDP strain of rgdId: 13506918 and symbol: F344/N and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:26 INFO [status] - HRDP strain of rgdId: 737926 and symbol: F344/NCrl and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:26 INFO [status] - HRDP strain of rgdId: 61109 and symbol: F344/NHsd and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:26 INFO [status] - HRDP strain of rgdId: 39456105 and symbol: F344/StmMcwi and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:26 INFO [status] - HRDP strain of rgdId: 629509 and symbol: FHH/EurMcwi and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:26 INFO [status] - HRDP strain of rgdId: 10395297 and symbol: GK/FarMcwi and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:27 INFO [status] - HRDP strain of rgdId: 629485 and symbol: LE/Stm and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:27 INFO [status] - HRDP strain of rgdId: 10755352 and symbol: LH/MavRrrcAek and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:27 INFO [status] - HRDP strain of rgdId: 149735516 and symbol: LL/MavRrrcAek and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:27 INFO [status] - HRDP strain of rgdId: 10755354 and symbol: LN/MavRrrcAek and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:27 INFO [status] - HRDP strain of rgdId: 10024 and symbol: M520/N and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:27 INFO [status] - HRDP strain of rgdId: 40818401 and symbol: M520/NRrrcMcwi and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:27 INFO [status] - HRDP strain of rgdId: 70449 and symbol: MR/N and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:27 INFO [status] - HRDP strain of rgdId: 153323320 and symbol: MR/NRrrc and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:28 INFO [status] - HRDP strain of rgdId: 155888488 and symbol: MWF/SimwMcwi and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:28 INFO [status] - HRDP strain of rgdId: 1302722 and symbol: PVG/Seac and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:28 INFO [status] - HRDP strain of rgdId: 156362762 and symbol: RCS/LavRrrcMcwi and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:28 INFO [status] - HRDP strain of rgdId: 1357994 and symbol: SHR/NCrl and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:28 INFO [status] - HRDP strain of rgdId: 724574 and symbol: SHR/NHsd and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:28 INFO [status] - HRDP strain of rgdId: 38549352 and symbol: SHR/OlaIpcvMcwi and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:29 INFO [status] - HRDP strain of rgdId: 2311051 and symbol: SHRSP/A3NCrl and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:29 INFO [status] - HRDP strain of rgdId: 1582184 and symbol: SR/JrHsd and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:29 INFO [status] - HRDP strain of rgdId: 2308886 and symbol: SS/HsdMcwiCrl and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:29 INFO [status] - HRDP strain of rgdId: 1582190 and symbol: SS/JrHsd and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:29 INFO [status] - HRDP strain of rgdId: 61499 and symbol: SS/JrHsdMcwi and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:29 INFO [status] - HRDP strain of rgdId: 2312498 and symbol: WAG/RijCrl and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:30 INFO [status] - HRDP strain of rgdId: 70454 and symbol: WKY/N and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:30 INFO [status] - HRDP strain of rgdId: 1358112 and symbol: WKY/NCrl and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:30 INFO [status] - HRDP strain of rgdId: 61105 and symbol: WKY/NHsd and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:30 INFO [status] - HRDP strain of rgdId: 10045 and symbol: WN/N and subgroup: Classic Inbred Strains is inserted
+2024-04-30 15:15:30 INFO [status] - finished inserting classic inbred strains
+2024-04-30 15:15:30 INFO [status] - 
+2024-04-30 15:15:30 INFO [status] - started inserting HXB/BXH Recombinant Inbred Panel strains
+2024-04-30 15:15:30 INFO [status] - HRDP strain of rgdId: 38676495 and symbol: BN-<i>Lx</i>/CubMcwi and subgroup: HXB/BXH Recombinant Inbred Panel is inserted
+2024-04-30 15:15:31 INFO [status] - HRDP strain of rgdId: 149735530 and symbol: BXH2/CubMcwi and subgroup: HXB/BXH Recombinant Inbred Panel is inserted
+2024-04-30 15:15:31 INFO [status] - HRDP strain of rgdId: 149735533 and symbol: BXH3/CubMcwi and subgroup: HXB/BXH Recombinant Inbred Panel is inserted
+2024-04-30 15:15:31 INFO [status] - HRDP strain of rgdId: 156420150 and symbol: BXH6/CubMcwi and subgroup: HXB/BXH Recombinant Inbred Panel is inserted
+2024-04-30 15:15:31 INFO [status] - HRDP strain of rgdId: 38549351 and symbol: HXB10/IpcvMcwi and subgroup: HXB/BXH Recombinant Inbred Panel is inserted
+2024-04-30 15:15:32 INFO [status] - HRDP strain of rgdId: 2307085 and symbol: HXB17/Ipcv and subgroup: HXB/BXH Recombinant Inbred Panel is inserted
+2024-04-30 15:15:32 INFO [status] - HRDP strain of rgdId: 156420148 and symbol: HXB18/IpcvMcwi and subgroup: HXB/BXH Recombinant Inbred Panel is inserted
+2024-04-30 15:15:32 INFO [status] - HRDP strain of rgdId: 149735520 and symbol: HXB2/IpcvMcwi and subgroup: HXB/BXH Recombinant Inbred Panel is inserted
+2024-04-30 15:15:32 INFO [status] - HRDP strain of rgdId: 149735521 and symbol: HXB20/IpcvMcwi and subgroup: HXB/BXH Recombinant Inbred Panel is inserted
+2024-04-30 15:15:32 INFO [status] - HRDP strain of rgdId: 156420149 and symbol: HXB23/IpcvMcwi and subgroup: HXB/BXH Recombinant Inbred Panel is inserted
+2024-04-30 15:15:33 INFO [status] - HRDP strain of rgdId: 149735519 and symbol: HXB31/IpcvMcwi and subgroup: HXB/BXH Recombinant Inbred Panel is inserted
+2024-04-30 15:15:33 INFO [status] - HRDP strain of rgdId: 149735518 and symbol: HXB4/IpcvMcwi and subgroup: HXB/BXH Recombinant Inbred Panel is inserted
+2024-04-30 15:15:33 INFO [status] - HRDP strain of rgdId: 38549352 and symbol: SHR/OlaIpcvMcwi and subgroup: HXB/BXH Recombinant Inbred Panel is inserted
+2024-04-30 15:15:33 INFO [status] - finished inserting HXB/BXH Recombinant Inbred Panel strains
+2024-04-30 15:15:33 INFO [status] - 
+2024-04-30 15:15:33 INFO [status] - started inserting FXLE/LEXF Recombinant Inbred Panel strains
+2024-04-30 15:15:33 INFO [status] - HRDP strain of rgdId: 39456105 and symbol: F344/StmMcwi and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:34 INFO [status] - HRDP strain of rgdId: 1302602 and symbol: FXLE12/Stm and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:34 INFO [status] - HRDP strain of rgdId: 153323324 and symbol: FXLE12/StmMcwi and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:34 INFO [status] - HRDP strain of rgdId: 1302665 and symbol: FXLE13/Stm and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:34 INFO [status] - HRDP strain of rgdId: 156430094 and symbol: FXLE13/StmMcwi and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:35 INFO [status] - HRDP strain of rgdId: 1302615 and symbol: FXLE14/Stm and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:35 INFO [status] - HRDP strain of rgdId: 156430095 and symbol: FXLE14/StmMcwi and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:36 INFO [status] - HRDP strain of rgdId: 1302673 and symbol: FXLE15/Stm and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:36 INFO [status] - HRDP strain of rgdId: 153344518 and symbol: FXLE15/StmMcwi and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:36 INFO [status] - HRDP strain of rgdId: 1302619 and symbol: FXLE16/Stm and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:37 INFO [status] - HRDP strain of rgdId: 1302708 and symbol: FXLE17/Stm and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:37 INFO [status] - HRDP strain of rgdId: 156430100 and symbol: FXLE17/StmMcwi and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:38 INFO [status] - HRDP strain of rgdId: 1302682 and symbol: FXLE18/Stm and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:38 INFO [status] - HRDP strain of rgdId: 1302690 and symbol: FXLE19/Stm and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:39 INFO [status] - HRDP strain of rgdId: 1302633 and symbol: FXLE20/Stm and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:39 INFO [status] - HRDP strain of rgdId: 156430109 and symbol: FXLE20/StmMcwi and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:39 INFO [status] - HRDP strain of rgdId: 156430103 and symbol: FXLE21/StmMcwi and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:39 INFO [status] - HRDP strain of rgdId: 156430104 and symbol: FXLE22/StmMcwi and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:40 INFO [status] - HRDP strain of rgdId: 1302601 and symbol: FXLE23/Stm and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:40 INFO [status] - HRDP strain of rgdId: 156430105 and symbol: FXLE23/StmMcwi and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:40 INFO [status] - HRDP strain of rgdId: 1302603 and symbol: FXLE25/Stm and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:41 INFO [status] - HRDP strain of rgdId: 1302598 and symbol: FXLE26/Stm and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:41 INFO [status] - HRDP strain of rgdId: 156430108 and symbol: FXLE26/StmMcwi and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:41 INFO [status] - HRDP strain of rgdId: 629485 and symbol: LE/Stm and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:41 INFO [status] - HRDP strain of rgdId: 149735517 and symbol: LEXF10A/StmMcwi and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:41 INFO [status] - HRDP strain of rgdId: 156430091 and symbol: LEXF10B/StmMcwi and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:42 INFO [status] - HRDP strain of rgdId: 1302612 and symbol: LEXF10C/Stm and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:42 INFO [status] - HRDP strain of rgdId: 156430092 and symbol: LEXF10C/StmMcwi and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:43 INFO [status] - HRDP strain of rgdId: 1302638 and symbol: LEXF11/Stm and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:44 INFO [status] - HRDP strain of rgdId: 1302641 and symbol: LEXF1A/Stm and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:45 INFO [status] - HRDP strain of rgdId: 1302666 and symbol: LEXF1C/Stm and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:45 INFO [status] - HRDP strain of rgdId: 153344519 and symbol: LEXF1C/StmMcwi and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:46 INFO [status] - HRDP strain of rgdId: 1302605 and symbol: LEXF2A/Stm and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:46 INFO [status] - HRDP strain of rgdId: 156430077 and symbol: LEXF2A/StmMcwi and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:47 INFO [status] - HRDP strain of rgdId: 1302710 and symbol: LEXF2B/Stm and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:47 INFO [status] - HRDP strain of rgdId: 156430079 and symbol: LEXF2C/StmMcwi and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:48 INFO [status] - HRDP strain of rgdId: 1302707 and symbol: LEXF3/Stm and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:48 INFO [status] - HRDP strain of rgdId: 1302604 and symbol: LEXF4/Stm and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:49 INFO [status] - HRDP strain of rgdId: 1302723 and symbol: LEXF5/Stm and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:49 INFO [status] - HRDP strain of rgdId: 156430082 and symbol: LEXF5/StmMcwi and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:50 INFO [status] - HRDP strain of rgdId: 1302617 and symbol: LEXF6B/Stm and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:50 INFO [status] - HRDP strain of rgdId: 153344520 and symbol: LEXF6B/StmMcwi and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:51 INFO [status] - HRDP strain of rgdId: 1302652 and symbol: LEXF7A/Stm and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:51 INFO [status] - HRDP strain of rgdId: 156430085 and symbol: LEXF7B/StmMcwi and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:51 INFO [status] - HRDP strain of rgdId: 156430086 and symbol: LEXF7C/StmMcwi and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:51 INFO [status] - HRDP strain of rgdId: 156430087 and symbol: LEXF8A/StmMcwi and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:52 INFO [status] - HRDP strain of rgdId: 1302699 and symbol: LEXF8D/Stm and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:52 INFO [status] - HRDP strain of rgdId: 156430089 and symbol: LEXF8D/StmMcwi and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:52 INFO [status] - HRDP strain of rgdId: 156430090 and symbol: LEXF9/StmMcwi and subgroup: FXLE/LEXF Recombinant Inbred Panel is inserted
+2024-04-30 15:15:52 INFO [status] - finished inserting FXLE/LEXF Recombinant Inbred Panell strains
+2024-04-30 15:15:52 INFO [status] - 
+2024-04-30 15:15:52 INFO [status] - === OK === elapsed 41 seconds 
