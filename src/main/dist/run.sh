@@ -16,5 +16,6 @@ java -Dspring.config=$APPDIR/../properties/default_db2.xml \
     -Dlog4j.configurationFile=file://$APPDIR/properties/log4j2.xml \
     -jar lib/$APPNAME.jar "$@" > run.log 2>&1
 
-mailx -s "[$SERVER] hrdp-portal-cache-pipeline Run" -a "Content-Type: text/plain; charset=utf-8" $EMAIL_LIST < $APPDIR/logs/status.log
+mailx -s "[$SERVER]  hrdp-portal-cache-pipeline Run" $EMAIL_LIST < $APPDIR/logs/status.log
+
 
