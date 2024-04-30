@@ -6,7 +6,7 @@
 APPNAME="hrdp-portal-cache-pipeline"
 APPDIR=/home/rgddata/pipelines/$APPNAME
 SERVER=`hostname -s | tr '[a-z]' '[A-Z]'`
-EMAIL_LIST=akundurthi@mcw.edu
+EMAIL_LIST=akundurthi@mcw.edu,rgddata@travis.rgd.mcw.edu
 if [ "$SERVER" = "REED" ]; then
   EMAIL_LIST=rgd.devops@mcw.edu
 fi
