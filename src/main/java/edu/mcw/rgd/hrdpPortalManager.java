@@ -135,7 +135,7 @@ public class hrdpPortalManager {
                 int availableId = availDAO.getAvailableStrainByPrimaryStrainId(str.getRgdId());
                 String availSymbol=null;
                 if(availableId!=0){
-                    Strain availStrain = strainDAO.getStrainByKey(availableId);
+                    Strain availStrain = strainDAO.getStrain(availableId);
                     availSymbol = availStrain.getSymbol();
                 }
 
