@@ -30,6 +30,7 @@ public class hrdpPortalManager {
     PhenominerDAO phenominerDAO = new PhenominerDAO();
 
     HrdpPortalCacheDAO cacheDAO = new HrdpPortalCacheDAO();
+    HrdpPortalAvailanilityDAO availDAO = new HrdpPortalAvailanilityDAO();
 
     Map mapKey;
 
@@ -130,6 +131,13 @@ public class hrdpPortalManager {
                             .collect(Collectors.joining(","));
                 }
 
+                //logic for retrieving available strain id and it's symbol
+                int availableId = availDAO.getAvailableStrainByPrimaryStrainId(str.getRgdId());
+                String availSymbol=null;
+                if(availableId!=0){
+                    Strain availStrain = strainDAO.getStrainByKey(availableId);
+                    availSymbol = availStrain.getSymbol();
+                }
 
                 HrdpPortalCache hrdp = new HrdpPortalCache();
                 hrdp.setStrainId(str.getRgdId());
@@ -145,6 +153,8 @@ public class hrdpPortalManager {
                 hrdp.setHasChildSampleCount(childSamplesExist?1:0);
                 hrdp.setHasPhenominer(hasPhenominer?1:0);
                 hrdp.setHasVariantVisualizer(hasVariantVisualizer?1:0);
+                hrdp.setAvailableStrainId(availableId);
+                hrdp.setAvailableStrainSymbol(availSymbol);
 
                 boolean checkStrainExists = cacheDAO.checkStrainExists(str.getRgdId(),groupName);
                 if(checkStrainExists){
