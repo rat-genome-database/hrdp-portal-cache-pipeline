@@ -63,23 +63,24 @@ public class hrdpPortalManager {
         log.info("   started at "+sdt.format(new Date()));
         log.info("");
         log.info("started inserting classic inbred strains");
-        run("Classic Inbred Strains");
+        run("HRDP","Classic Inbred Strains");
+        run("HRDP PORTAL","Classic Inbred Strains");
         log.info("finished inserting classic inbred strains");
         log.info("");
         log.info("started inserting HXB/BXH Recombinant Inbred Panel strains");
-        run("HXB/BXH Recombinant Inbred Panel");
+        run("HRDP","HXB/BXH Recombinant Inbred Panel");
         log.info("finished inserting HXB/BXH Recombinant Inbred Panel strains");
         log.info("");
         log.info("started inserting FXLE/LEXF Recombinant Inbred Panel strains");
-        run("FXLE/LEXF Recombinant Inbred Panel");
+        run("HRDP","FXLE/LEXF Recombinant Inbred Panel");
         log.info("finished inserting FXLE/LEXF Recombinant Inbred Panell strains");
         log.info("");
         log.info("=== OK === elapsed "+ Utils.formatElapsedTime(time0, System.currentTimeMillis()));
     }
 
-    public void run(String groupName) throws Exception{
+    public void run(String groupName,String subGroupName) throws Exception{
 
-        List<Strain> hrdpStrains = strainDAO.getStrainsByGroupNameAndSubGroupName("HRDP", groupName);
+        List<Strain> hrdpStrains = strainDAO.getStrainsByGroupNameAndSubGroupName(groupName, subGroupName);
 
         if (hrdpStrains!=null){
             for (Strain str : hrdpStrains) {
@@ -142,7 +143,7 @@ public class hrdpPortalManager {
                 HrdpPortalCache hrdp = new HrdpPortalCache();
                 hrdp.setStrainId(str.getRgdId());
                 hrdp.setStrainSymbol(str.getSymbol());
-                hrdp.setGroupName(groupName);
+                hrdp.setGroupName(subGroupName);
                 hrdp.setParentOntId(parentOntId);
                 hrdp.setChildOntIds(childOntIdsString);
                 hrdp.setParentSampleIds(parentSampleString);
