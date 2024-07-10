@@ -157,14 +157,14 @@ public class hrdpPortalManager {
                 hrdp.setAvailableStrainId(availableId);
                 hrdp.setAvailableStrainSymbol(availSymbol);
 
-                boolean checkStrainExists = cacheDAO.checkStrainExists(str.getRgdId(),groupName);
+                boolean checkStrainExists = cacheDAO.checkStrainExists(str.getRgdId(),subGroupName);
                 if(checkStrainExists){
                     cacheDAO.updateHrdpPortalData(hrdp);
-                    log.info("HRDP strain of rgdId: "+str.getRgdId()+" and symbol: "+str.getSymbol()+" and subgroup: "+groupName+" is updated");
+                    log.info("HRDP strain of rgdId: "+str.getRgdId()+" and symbol: "+str.getSymbol()+" and subgroup: "+subGroupName+" is updated");
                 }
                 else{
                     cacheDAO.insertHrdpPortalData(hrdp);
-                    log.info("HRDP strain of rgdId: "+str.getRgdId()+" and symbol: "+str.getSymbol()+" and subgroup: "+groupName+" is inserted");
+                    log.info("HRDP strain of rgdId: "+str.getRgdId()+" and symbol: "+str.getSymbol()+" and subgroup: "+subGroupName+" is inserted");
                 }
 
 
