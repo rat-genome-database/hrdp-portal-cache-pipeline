@@ -90,7 +90,7 @@ public class hrdpPortalManager {
                 String parentOntId = ontologyDAO.getStrainOntIdForRgdId(str.getRgdId());
 //                List<StringMapQuery.MapPair>childOntIds  = annotationDAO.getChildOntIds(parentOntId);
 //                List<TermWithStats> childOntIds = ontologyDAO.getActiveChildTerms(parentOntId,3);
-                List<Strain>subStrains = strainDAO.getSubStrains(str.getSymbol());
+                List<Strain>subStrains = strainDAO.getSubStrainsByType(str.getSymbol());
                 int phenoRecCount = phenominerDAO.getRecordCountForTerm(parentOntId, 3);
                 List<Sample> parentSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(str.getRgdId(), mapKey.getKey());
                 boolean hasPhenominer = false;
