@@ -89,7 +89,8 @@ public class hrdpPortalManager {
             for (Strain str : hrdpStrains) {
                 String parentOntId = ontologyDAO.getStrainOntIdForRgdId(str.getRgdId());
 //                List<StringMapQuery.MapPair>childOntIds  = annotationDAO.getChildOntIds(parentOntId);
-                List<TermWithStats> childOntIds = ontologyDAO.getActiveChildTerms(parentOntId,3);
+//                List<TermWithStats> childOntIds = ontologyDAO.getActiveChildTerms(parentOntId,3);
+                List<Strain>subStrains = strainDAO.getSubStrains(str.getSymbol());
                 int phenoRecCount = phenominerDAO.getRecordCountForTerm(parentOntId, 3);
                 List<Sample> parentSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(str.getRgdId(), mapKey.getKey());
                 boolean hasPhenominer = false;
@@ -115,26 +116,43 @@ public class hrdpPortalManager {
 //                        }
 //                    }
 //                }
-                if (childOntIds != null) {
-                    for (TermWithStats childId : childOntIds) {
-                        String accId = childId.getAccId();
-                        if(accId!=null) {
-                            int childPhenoRecCount = phenominerDAO.getRecordCountForTerm(accId, 3);
+                if(subStrains!=null){
+                    for(Strain substr:subStrains){
+                        String childOntId = ontologyDAO.getStrainOntIdForRgdId(substr.getRgdId());
+                        if(childOntId!=null){
+                            int childPhenoRecCount = phenominerDAO.getRecordCountForTerm(childOntId, 3);
                             if (childPhenoRecCount > 0) {
                                 childHasPhenominer = true;
-                                validChildOntIds.add(accId);
+                                validChildOntIds.add(childOntId);
                             }
                         }
-                        Strain childStr =  strainDAO.getStrainBySymbolNew(childId.getTerm());
-                        if(childStr!=null) {
-                            int strainId = childStr.getRgdId();
-                            List<Sample> childSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(strainId, mapKey.getKey());
-                            if (childSamples != null) {
-                                allChildSamples.addAll(childSamples);
-                            }
+                        List<Sample>childSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(substr.getRgdId(), mapKey.getKey());
+                        if(childSamples!=null){
+                            allChildSamples.addAll(childSamples);
                         }
                     }
                 }
+
+//                if (childOntIds != null) {
+//                    for (TermWithStats childId : childOntIds) {
+//                        String accId = childId.getAccId();
+//                        if(accId!=null) {
+//                            int childPhenoRecCount = phenominerDAO.getRecordCountForTerm(accId, 3);
+//                            if (childPhenoRecCount > 0) {
+//                                childHasPhenominer = true;
+//                                validChildOntIds.add(accId);
+//                            }
+//                        }
+//                        Strain childStr =  strainDAO.getStrainBySymbolNew(childId.getTerm());
+//                        if(childStr!=null) {
+//                            int strainId = childStr.getRgdId();
+//                            List<Sample> childSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(strainId, mapKey.getKey());
+//                            if (childSamples != null) {
+//                                allChildSamples.addAll(childSamples);
+//                            }
+//                        }
+//                    }
+//                }
                 hasPhenominer = phenoRecCount > 0 || childHasPhenominer;
 
                 childSamplesExist = allChildSamples != null && allChildSamples.size() > 0;
