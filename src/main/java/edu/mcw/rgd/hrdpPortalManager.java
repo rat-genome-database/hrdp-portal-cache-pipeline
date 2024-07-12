@@ -6,6 +6,7 @@ import edu.mcw.rgd.datamodel.HrdpPortalCache;
 import edu.mcw.rgd.datamodel.Map;
 import edu.mcw.rgd.datamodel.Sample;
 import edu.mcw.rgd.datamodel.Strain;
+import edu.mcw.rgd.datamodel.ontologyx.TermWithStats;
 import edu.mcw.rgd.process.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -63,15 +64,17 @@ public class hrdpPortalManager {
         log.info("   started at "+sdt.format(new Date()));
         log.info("");
         log.info("started inserting classic inbred strains");
-        run("HRDP","Classic Inbred Strains");
         run("HRDP PORTAL","Classic Inbred Strains");
+        run("HRDP","Classic Inbred Strains");
         log.info("finished inserting classic inbred strains");
         log.info("");
         log.info("started inserting HXB/BXH Recombinant Inbred Panel strains");
+        run("HRDP PORTAL","HXB/BXH Recombinant Inbred Panel");
         run("HRDP","HXB/BXH Recombinant Inbred Panel");
         log.info("finished inserting HXB/BXH Recombinant Inbred Panel strains");
         log.info("");
         log.info("started inserting FXLE/LEXF Recombinant Inbred Panel strains");
+        run("HRDP PORTAL","FXLE/LEXF Recombinant Inbred Panel");
         run("HRDP","FXLE/LEXF Recombinant Inbred Panel");
         log.info("finished inserting FXLE/LEXF Recombinant Inbred Panell strains");
         log.info("");
@@ -85,7 +88,8 @@ public class hrdpPortalManager {
         if (hrdpStrains!=null){
             for (Strain str : hrdpStrains) {
                 String parentOntId = ontologyDAO.getStrainOntIdForRgdId(str.getRgdId());
-                List<StringMapQuery.MapPair>childOntIds  = annotationDAO.getChildOntIds(parentOntId);
+//                List<StringMapQuery.MapPair>childOntIds  = annotationDAO.getChildOntIds(parentOntId);
+                List<TermWithStats> childOntIds = ontologyDAO.getActiveChildTerms(parentOntId,3);
                 int phenoRecCount = phenominerDAO.getRecordCountForTerm(parentOntId, 3);
                 List<Sample> parentSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(str.getRgdId(), mapKey.getKey());
                 boolean hasPhenominer = false;
@@ -98,16 +102,36 @@ public class hrdpPortalManager {
                 List<String> validChildOntIds = new ArrayList<>();
                 List<Sample> allChildSamples = new ArrayList<>();
 
-                if(childOntIds!=null) {
-                    for (StringMapQuery.MapPair childOntId : childOntIds) {
-                        int childPhenoRecCount = phenominerDAO.getRecordCountForTerm(childOntId.keyValue, 3);
-                        if (childPhenoRecCount > 0) {
-                            childHasPhenominer = true;
-                            validChildOntIds.add(childOntId.keyValue);
+//                if(childOntIds!=null) {
+//                    for (StringMapQuery.MapPair childOntId : childOntIds) {
+//                        int childPhenoRecCount = phenominerDAO.getRecordCountForTerm(childOntId.keyValue, 3);
+//                        if (childPhenoRecCount > 0) {
+//                            childHasPhenominer = true;
+//                            validChildOntIds.add(childOntId.keyValue);
+//                        }
+//                        List<Sample>childSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(Integer.parseInt(childOntId.stringValue), mapKey.getKey());
+//                        if(childSamples!=null){
+//                            allChildSamples.addAll(childSamples);
+//                        }
+//                    }
+//                }
+                if (childOntIds != null) {
+                    for (TermWithStats childId : childOntIds) {
+                        String accId = childId.getAccId();
+                        if(accId!=null) {
+                            int childPhenoRecCount = phenominerDAO.getRecordCountForTerm(accId, 3);
+                            if (childPhenoRecCount > 0) {
+                                childHasPhenominer = true;
+                                validChildOntIds.add(accId);
+                            }
                         }
-                        List<Sample>childSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(Integer.parseInt(childOntId.stringValue), mapKey.getKey());
-                        if(childSamples!=null){
-                            allChildSamples.addAll(childSamples);
+                        Strain childStr =  strainDAO.getStrainBySymbolNew(childId.getTerm());
+                        if(childStr!=null) {
+                            int strainId = childStr.getRgdId();
+                            List<Sample> childSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(strainId, mapKey.getKey());
+                            if (childSamples != null) {
+                                allChildSamples.addAll(childSamples);
+                            }
                         }
                     }
                 }
