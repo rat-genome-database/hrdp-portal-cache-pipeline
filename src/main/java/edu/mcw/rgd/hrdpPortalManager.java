@@ -6,6 +6,7 @@ import edu.mcw.rgd.datamodel.HrdpPortalCache;
 import edu.mcw.rgd.datamodel.Map;
 import edu.mcw.rgd.datamodel.Sample;
 import edu.mcw.rgd.datamodel.Strain;
+import edu.mcw.rgd.datamodel.ontologyx.Term;
 import edu.mcw.rgd.datamodel.ontologyx.TermWithStats;
 import edu.mcw.rgd.process.Utils;
 import org.apache.logging.log4j.LogManager;
@@ -31,7 +32,7 @@ public class hrdpPortalManager {
     PhenominerDAO phenominerDAO = new PhenominerDAO();
 
     HrdpPortalCacheDAO cacheDAO = new HrdpPortalCacheDAO();
-    HrdpPortalAvailanilityDAO availDAO = new HrdpPortalAvailanilityDAO();
+    HrdpPortalAvailabilityDAO availDAO = new HrdpPortalAvailabilityDAO();
 
     Map mapKey;
 
@@ -65,17 +66,17 @@ public class hrdpPortalManager {
         log.info("");
         log.info("started inserting classic inbred strains");
         run("HRDP PORTAL","Classic Inbred Strains");
-        run("HRDP","Classic Inbred Strains");
+//        run("HRDP","Classic Inbred Strains");
         log.info("finished inserting classic inbred strains");
         log.info("");
         log.info("started inserting HXB/BXH Recombinant Inbred Panel strains");
         run("HRDP PORTAL","HXB/BXH Recombinant Inbred Panel");
-        run("HRDP","HXB/BXH Recombinant Inbred Panel");
+//        run("HRDP","HXB/BXH Recombinant Inbred Panel");
         log.info("finished inserting HXB/BXH Recombinant Inbred Panel strains");
         log.info("");
         log.info("started inserting FXLE/LEXF Recombinant Inbred Panel strains");
         run("HRDP PORTAL","FXLE/LEXF Recombinant Inbred Panel");
-        run("HRDP","FXLE/LEXF Recombinant Inbred Panel");
+//        run("HRDP","FXLE/LEXF Recombinant Inbred Panel");
         log.info("finished inserting FXLE/LEXF Recombinant Inbred Panell strains");
         log.info("");
         log.info("=== OK === elapsed "+ Utils.formatElapsedTime(time0, System.currentTimeMillis()));
@@ -89,8 +90,8 @@ public class hrdpPortalManager {
             for (Strain str : hrdpStrains) {
                 String parentOntId = ontologyDAO.getStrainOntIdForRgdId(str.getRgdId());
 //                List<StringMapQuery.MapPair>childOntIds  = annotationDAO.getChildOntIds(parentOntId);
-//                List<TermWithStats> childOntIds = ontologyDAO.getActiveChildTerms(parentOntId,3);
-                List<Strain>subStrains = strainDAO.getSubStrainsByType(str.getSymbol());
+                List<Term> childOntIds = ontologyDAO.getAllActiveTermDescendants(parentOntId);
+//                List<Strain>subStrains = strainDAO.getSubStrainsByType(str.getSymbol());
                 int phenoRecCount = phenominerDAO.getRecordCountForTerm(parentOntId, 3);
                 List<Sample> parentSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(str.getRgdId(), mapKey.getKey());
                 boolean hasPhenominer = false;
@@ -116,43 +117,43 @@ public class hrdpPortalManager {
 //                        }
 //                    }
 //                }
-                if(subStrains!=null){
-                    for(Strain substr:subStrains){
-                        String childOntId = ontologyDAO.getStrainOntIdForRgdId(substr.getRgdId());
-                        if(childOntId!=null){
-                            int childPhenoRecCount = phenominerDAO.getRecordCountForTerm(childOntId, 3);
-                            if (childPhenoRecCount > 0) {
-                                childHasPhenominer = true;
-                                validChildOntIds.add(childOntId);
-                            }
-                        }
-                        List<Sample>childSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(substr.getRgdId(), mapKey.getKey());
-                        if(childSamples!=null){
-                            allChildSamples.addAll(childSamples);
-                        }
-                    }
-                }
-
-//                if (childOntIds != null) {
-//                    for (TermWithStats childId : childOntIds) {
-//                        String accId = childId.getAccId();
-//                        if(accId!=null) {
-//                            int childPhenoRecCount = phenominerDAO.getRecordCountForTerm(accId, 3);
+//                if(subStrains!=null){
+//                    for(Strain substr:subStrains){
+//                        String childOntId = ontologyDAO.getStrainOntIdForRgdId(substr.getRgdId());
+//                        if(childOntId!=null){
+//                            int childPhenoRecCount = phenominerDAO.getRecordCountForTerm(childOntId, 3);
 //                            if (childPhenoRecCount > 0) {
 //                                childHasPhenominer = true;
-//                                validChildOntIds.add(accId);
+//                                validChildOntIds.add(childOntId);
 //                            }
 //                        }
-//                        Strain childStr =  strainDAO.getStrainBySymbolNew(childId.getTerm());
-//                        if(childStr!=null) {
-//                            int strainId = childStr.getRgdId();
-//                            List<Sample> childSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(strainId, mapKey.getKey());
-//                            if (childSamples != null) {
-//                                allChildSamples.addAll(childSamples);
-//                            }
+//                        List<Sample>childSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(substr.getRgdId(), mapKey.getKey());
+//                        if(childSamples!=null){
+//                            allChildSamples.addAll(childSamples);
 //                        }
 //                    }
 //                }
+
+                if (childOntIds != null) {
+                    for (Term childId : childOntIds) {
+                        String accId = childId.getAccId();
+                        if(accId!=null) {
+                            int childPhenoRecCount = phenominerDAO.getRecordCountForTerm(accId, 3);
+                            if (childPhenoRecCount > 0) {
+                                childHasPhenominer = true;
+                                validChildOntIds.add(accId);
+                            }
+                        }
+                        Strain childStr =  strainDAO.getStrainBySymbolNew(childId.getTerm());
+                        if(childStr!=null) {
+                            int strainId = childStr.getRgdId();
+                            List<Sample> childSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(strainId, mapKey.getKey());
+                            if (childSamples != null) {
+                                allChildSamples.addAll(childSamples);
+                            }
+                        }
+                    }
+                }
                 hasPhenominer = phenoRecCount > 0 || childHasPhenominer;
 
                 childSamplesExist = allChildSamples != null && allChildSamples.size() > 0;
@@ -175,13 +176,19 @@ public class hrdpPortalManager {
                 }
 
                 //logic for retrieving available strain id and it's symbol
-                int availableId = availDAO.getAvailableStrainByPrimaryStrainId(str.getRgdId());
-                String availSymbol=null;
-                if(availableId!=0){
-                    Strain availStrain = strainDAO.getStrain(availableId);
-                    availSymbol = availStrain.getSymbol();
+                String availableIdString = availDAO.getAvailableStrainByPrimaryStrainId(str.getRgdId(),subGroupName);
+                List<String> symbols = new ArrayList<>();
+                if(availableIdString!=null){
+                    String[] availableStrainIds = availableIdString.split(",");
+                    // Fetch symbols for each ID
+                    for(String id:availableStrainIds){
+                        Strain availStrain = strainDAO.getStrain(Integer.parseInt(id));
+                        if(availStrain!=null) {
+                            symbols.add(availStrain.getSymbol());
+                        }
+                    }
                 }
-
+                String availableStrainSymbols = String.join(",", symbols);
                 HrdpPortalCache hrdp = new HrdpPortalCache();
                 hrdp.setStrainId(str.getRgdId());
                 hrdp.setStrainSymbol(str.getSymbol());
@@ -196,8 +203,8 @@ public class hrdpPortalManager {
                 hrdp.setHasChildSampleCount(childSamplesExist?1:0);
                 hrdp.setHasPhenominer(hasPhenominer?1:0);
                 hrdp.setHasVariantVisualizer(hasVariantVisualizer?1:0);
-                hrdp.setAvailableStrainId(availableId);
-                hrdp.setAvailableStrainSymbol(availSymbol);
+                hrdp.setAvailableStrainId(availableIdString);
+                hrdp.setAvailableStrainSymbol(availableStrainSymbols);
 
                 boolean checkStrainExists = cacheDAO.checkStrainExists(str.getRgdId(),subGroupName);
                 if(checkStrainExists){
