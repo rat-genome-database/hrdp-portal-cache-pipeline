@@ -77,7 +77,7 @@ public class hrdpPortalManager {
         log.info("started inserting FXLE/LEXF Recombinant Inbred Panel strains");
         run("HRDP PORTAL","FXLE/LEXF Recombinant Inbred Panel");
 //        run("HRDP","FXLE/LEXF Recombinant Inbred Panel");
-        log.info("finished inserting FXLE/LEXF Recombinant Inbred Panell strains");
+        log.info("finished inserting FXLE/LEXF Recombinant Inbred Panel strains");
         log.info("");
         log.info("=== OK === elapsed "+ Utils.formatElapsedTime(time0, System.currentTimeMillis()));
     }
@@ -144,10 +144,11 @@ public class hrdpPortalManager {
                                 validChildOntIds.add(accId);
                             }
                         }
-                        Strain childStr =  strainDAO.getStrainBySymbolNew(childId.getTerm());
-                        if(childStr!=null) {
-                            int strainId = childStr.getRgdId();
-                            List<Sample> childSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(strainId, mapKey.getKey());
+//                        Strain childStr =  strainDAO.getStrainBySymbolNew(childId.getTerm());
+                        int childStrainId = strainDAO.getStrainRgdIdByTaglessStrainSymbolNew(childId.getTerm());
+                        if(childStrainId!=0) {
+//                            int strainId = childStr.getRgdId();
+                            List<Sample> childSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(childStrainId, mapKey.getKey());
                             if (childSamples != null) {
                                 allChildSamples.addAll(childSamples);
                             }
