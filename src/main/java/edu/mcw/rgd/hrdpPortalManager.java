@@ -93,7 +93,9 @@ public class hrdpPortalManager {
                 List<Term> childOntIds = ontologyDAO.getAllActiveTermDescendants(parentOntId);
 //                List<Strain>subStrains = strainDAO.getSubStrainsByType(str.getSymbol());
                 int phenoRecCount = phenominerDAO.getRecordCountForTerm(parentOntId, 3);
-                List<Sample> parentSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(str.getRgdId(), mapKey.getKey());
+                //remove when we have grcr8 variants
+                List<Sample> parentSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(str.getRgdId(), 372);
+//                List<Sample> parentSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(str.getRgdId(), mapKey.getKey());
                 boolean hasPhenominer = false;
                 boolean hasVariantVisualizer = false;
                 boolean childHasPhenominer = false;
@@ -148,7 +150,9 @@ public class hrdpPortalManager {
                         int childStrainId = strainDAO.getStrainRgdIdByTaglessStrainSymbolNew(childId.getTerm());
                         if(childStrainId!=0) {
 //                            int strainId = childStr.getRgdId();
-                            List<Sample> childSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(childStrainId, mapKey.getKey());
+                            //remove when we have grcr8 variants
+                            List<Sample> childSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(childStrainId, 372);
+//                            List<Sample> childSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(childStrainId, mapKey.getKey());
                             if (childSamples != null) {
                                 allChildSamples.addAll(childSamples);
                             }
