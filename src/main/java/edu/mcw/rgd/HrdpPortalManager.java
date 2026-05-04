@@ -8,6 +8,7 @@ import edu.mcw.rgd.datamodel.Sample;
 import edu.mcw.rgd.datamodel.Strain;
 import edu.mcw.rgd.datamodel.ontologyx.Term;
 import edu.mcw.rgd.datamodel.ontologyx.TermWithStats;
+import edu.mcw.rgd.process.MemoryMonitor;
 import edu.mcw.rgd.process.Utils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,7 +22,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class hrdpPortalManager {
+public class HrdpPortalManager {
 
     private String version;
     Logger log = LogManager.getLogger("status");
@@ -48,7 +49,7 @@ public class hrdpPortalManager {
 
         DefaultListableBeanFactory bf = new DefaultListableBeanFactory();
         new XmlBeanDefinitionReader(bf).loadBeanDefinitions(new FileSystemResource("properties/AppConfigure.xml"));
-        hrdpPortalManager manager = (hrdpPortalManager) (bf.getBean("manager"));
+        HrdpPortalManager manager = (HrdpPortalManager) (bf.getBean("manager"));
 
         try {
             manager.run();
@@ -63,23 +64,35 @@ public class hrdpPortalManager {
         log.info(getVersion());
         SimpleDateFormat sdt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         log.info("   started at "+sdt.format(new Date()));
-        log.info("");
-        log.info("started inserting classic inbred strains");
-        run("HRDP PORTAL","Classic Inbred Strains");
+
+        MemoryMonitor memoryMonitor = new MemoryMonitor();
+        memoryMonitor.start();
+
+        boolean ok = false;
+        try {
+            log.info("");
+            log.info("started inserting classic inbred strains");
+            run("HRDP PORTAL","Classic Inbred Strains");
 //        run("HRDP","Classic Inbred Strains");
-        log.info("finished inserting classic inbred strains");
-        log.info("");
-        log.info("started inserting HXB/BXH Recombinant Inbred Panel strains");
-        run("HRDP PORTAL","HXB/BXH Recombinant Inbred Panel");
+            log.info("finished inserting classic inbred strains");
+            log.info("");
+            log.info("started inserting HXB/BXH Recombinant Inbred Panel strains");
+            run("HRDP PORTAL","HXB/BXH Recombinant Inbred Panel");
 //        run("HRDP","HXB/BXH Recombinant Inbred Panel");
-        log.info("finished inserting HXB/BXH Recombinant Inbred Panel strains");
-        log.info("");
-        log.info("started inserting FXLE/LEXF Recombinant Inbred Panel strains");
-        run("HRDP PORTAL","FXLE/LEXF Recombinant Inbred Panel");
+            log.info("finished inserting HXB/BXH Recombinant Inbred Panel strains");
+            log.info("");
+            log.info("started inserting FXLE/LEXF Recombinant Inbred Panel strains");
+            run("HRDP PORTAL","FXLE/LEXF Recombinant Inbred Panel");
 //        run("HRDP","FXLE/LEXF Recombinant Inbred Panel");
-        log.info("finished inserting FXLE/LEXF Recombinant Inbred Panel strains");
-        log.info("");
-        log.info("=== OK === elapsed "+ Utils.formatElapsedTime(time0, System.currentTimeMillis()));
+            log.info("finished inserting FXLE/LEXF Recombinant Inbred Panel strains");
+            log.info("");
+
+            ok = true;
+        } finally {
+            memoryMonitor.stop();
+            log.info(memoryMonitor.getSummary());
+            log.info((ok ? "=== OK === " : "=== FAILED === ") + "elapsed " + Utils.formatElapsedTime(time0, System.currentTimeMillis()));
+        }
     }
 
     public void run(String groupName,String subGroupName) throws Exception{

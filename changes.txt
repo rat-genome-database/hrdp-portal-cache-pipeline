@@ -1,2 +1,5 @@
+May 04, 2026
+  added MemoryMonitor; renamed class hrdpPortalManager -> HrdpPortalManager (Java naming convention); updated dependencies
+
 April 30, 2024
   first working version
