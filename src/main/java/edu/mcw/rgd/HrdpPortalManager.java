@@ -1,13 +1,10 @@
 package edu.mcw.rgd;
 
-import edu.mcw.rgd.dao.impl.*;
-import edu.mcw.rgd.dao.spring.StringMapQuery;
 import edu.mcw.rgd.datamodel.HrdpPortalCache;
 import edu.mcw.rgd.datamodel.Map;
 import edu.mcw.rgd.datamodel.Sample;
 import edu.mcw.rgd.datamodel.Strain;
 import edu.mcw.rgd.datamodel.ontologyx.Term;
-import edu.mcw.rgd.datamodel.ontologyx.TermWithStats;
 import edu.mcw.rgd.process.MemoryMonitor;
 import edu.mcw.rgd.process.Utils;
 import org.apache.logging.log4j.LogManager;
@@ -26,20 +23,13 @@ public class HrdpPortalManager {
 
     private String version;
     Logger log = LogManager.getLogger("status");
-    StrainDAO strainDAO = new StrainDAO();
-    SampleDAO sampleDAO = new SampleDAO();
-    AnnotationDAO annotationDAO = new AnnotationDAO();
-    OntologyXDAO ontologyDAO = new OntologyXDAO();
-    PhenominerDAO phenominerDAO = new PhenominerDAO();
-
-    HrdpPortalCacheDAO cacheDAO = new HrdpPortalCacheDAO();
-    HrdpPortalAvailabilityDAO availDAO = new HrdpPortalAvailabilityDAO();
+    private Dao dao = new Dao();
 
     Map mapKey;
 
     {
         try {
-            mapKey = new MapDAO().getPrimaryRefAssembly(3);
+            mapKey = dao.getPrimaryRefAssembly(3);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -97,17 +87,17 @@ public class HrdpPortalManager {
 
     public void run(String groupName,String subGroupName) throws Exception{
 
-        List<Strain> hrdpStrains = strainDAO.getStrainsByGroupNameAndSubGroupName(groupName, subGroupName);
+        List<Strain> hrdpStrains = dao.getStrainsByGroupNameAndSubGroupName(groupName, subGroupName);
 
         if (hrdpStrains!=null){
             for (Strain str : hrdpStrains) {
-                String parentOntId = ontologyDAO.getStrainOntIdForRgdId(str.getRgdId());
+                String parentOntId = dao.getStrainOntIdForRgdId(str.getRgdId());
 //                List<StringMapQuery.MapPair>childOntIds  = annotationDAO.getChildOntIds(parentOntId);
-                List<Term> childOntIds = ontologyDAO.getAllActiveTermDescendants(parentOntId);
+                List<Term> childOntIds = dao.getAllActiveTermDescendants(parentOntId);
 //                List<Strain>subStrains = strainDAO.getSubStrainsByType(str.getSymbol());
-                int phenoRecCount = phenominerDAO.getRecordCountForTerm(parentOntId, 3);
+                int phenoRecCount = dao.getRecordCountForTerm(parentOntId, 3);
                 //remove when we have grcr8 variants
-                List<Sample> parentSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(str.getRgdId(), 372);
+                List<Sample> parentSamples = dao.getSamplesByStrainRgdIdAndMapKey(str.getRgdId(), 372);
 //                List<Sample> parentSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(str.getRgdId(), mapKey.getKey());
                 boolean hasPhenominer = false;
                 boolean hasVariantVisualizer = false;
@@ -153,18 +143,18 @@ public class HrdpPortalManager {
                     for (Term childId : childOntIds) {
                         String accId = childId.getAccId();
                         if(accId!=null) {
-                            int childPhenoRecCount = phenominerDAO.getRecordCountForTerm(accId, 3);
+                            int childPhenoRecCount = dao.getRecordCountForTerm(accId, 3);
                             if (childPhenoRecCount > 0) {
                                 childHasPhenominer = true;
                                 validChildOntIds.add(accId);
                             }
                         }
 //                        Strain childStr =  strainDAO.getStrainBySymbolNew(childId.getTerm());
-                        int childStrainId = strainDAO.getStrainRgdIdByTaglessStrainSymbolNew(childId.getTerm());
+                        int childStrainId = dao.getStrainRgdIdByTaglessStrainSymbolNew(childId.getTerm());
                         if(childStrainId!=0) {
 //                            int strainId = childStr.getRgdId();
                             //remove when we have grcr8 variants
-                            List<Sample> childSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(childStrainId, 372);
+                            List<Sample> childSamples = dao.getSamplesByStrainRgdIdAndMapKey(childStrainId, 372);
 //                            List<Sample> childSamples = sampleDAO.getSamplesByStrainRgdIdAndMapKey(childStrainId, mapKey.getKey());
                             if (childSamples != null) {
                                 allChildSamples.addAll(childSamples);
@@ -194,13 +184,13 @@ public class HrdpPortalManager {
                 }
 
                 //logic for retrieving available strain id and it's symbol
-                String availableIdString = availDAO.getAvailableStrainByPrimaryStrainId(str.getRgdId(),subGroupName);
+                String availableIdString = dao.getAvailableStrainByPrimaryStrainId(str.getRgdId(),subGroupName);
                 List<String> symbols = new ArrayList<>();
                 if(availableIdString!=null){
                     String[] availableStrainIds = availableIdString.split(",");
                     // Fetch symbols for each ID
                     for(String id:availableStrainIds){
-                        Strain availStrain = strainDAO.getStrain(Integer.parseInt(id));
+                        Strain availStrain = dao.getStrain(Integer.parseInt(id));
                         if(availStrain!=null) {
                             symbols.add(availStrain.getSymbol());
                         }
@@ -224,13 +214,13 @@ public class HrdpPortalManager {
                 hrdp.setAvailableStrainId(availableIdString);
                 hrdp.setAvailableStrainSymbol(availableStrainSymbols);
 
-                boolean checkStrainExists = cacheDAO.checkStrainExists(str.getRgdId(),subGroupName);
+                boolean checkStrainExists = dao.checkStrainExists(str.getRgdId(),subGroupName);
                 if(checkStrainExists){
-                    cacheDAO.updateHrdpPortalData(hrdp);
+                    dao.updateHrdpPortalData(hrdp);
                     log.info("HRDP strain of rgdId: "+str.getRgdId()+" and symbol: "+str.getSymbol()+" and subgroup: "+subGroupName+" is updated");
                 }
                 else{
-                    cacheDAO.insertHrdpPortalData(hrdp);
+                    dao.insertHrdpPortalData(hrdp);
                     log.info("HRDP strain of rgdId: "+str.getRgdId()+" and symbol: "+str.getSymbol()+" and subgroup: "+subGroupName+" is inserted");
                 }
 

@@ -1,3 +1,6 @@
+Jun 8, 2026
+  moved all db access into a Dao wrapper class; excluded commons-logging from commons-dbcp2 (spring-jcl conflict); updated dependencies
+
 May 04, 2026
   added MemoryMonitor; renamed class hrdpPortalManager -> HrdpPortalManager (Java naming convention); updated dependencies
 
