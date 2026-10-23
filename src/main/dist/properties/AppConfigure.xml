@@ -2,6 +2,6 @@
 
 <beans>
     <bean id="manager" class="edu.mcw.rgd.HrdpPortalManager">
-        <property name="version" value="hrdp-portal-cache-pipeline  -- build Jun 8, 2026" />
+        <property name="version" value="hrdp-portal-cache-pipeline  -- build Oct 23, 2026" />
     </bean>
 </beans>

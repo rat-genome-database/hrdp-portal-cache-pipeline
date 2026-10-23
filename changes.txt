@@ -1,3 +1,6 @@
+Oct 23, 2026
+  migrated to postgres; updated dependencies
+
 Jun 8, 2026
   moved all db access into a Dao wrapper class; excluded commons-logging from commons-dbcp2 (spring-jcl conflict); updated dependencies
 
