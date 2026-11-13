@@ -201,18 +201,20 @@ public class HrdpPortalManager {
                 hrdp.setStrainId(str.getRgdId());
                 hrdp.setStrainSymbol(str.getSymbol());
                 hrdp.setGroupName(subGroupName);
-                hrdp.setParentOntId(parentOntId);
-                hrdp.setChildOntIds(childOntIdsString);
-                hrdp.setParentSampleIds(parentSampleString);
-                hrdp.setChildSampleIds(childSampleString);
+                // empty strings must be stored as NULL: Oracle did that implicitly,
+                // postgres enforces it with the *_nonempty_ck check constraints
+                hrdp.setParentOntId(nullIfEmpty(parentOntId));
+                hrdp.setChildOntIds(nullIfEmpty(childOntIdsString));
+                hrdp.setParentSampleIds(nullIfEmpty(parentSampleString));
+                hrdp.setChildSampleIds(nullIfEmpty(childSampleString));
                 hrdp.setHasParentPhenoCount(phenoRecCount>0?1:0);
                 hrdp.setHasChildPhenoCount(childHasPhenominer?1:0);
                 hrdp.setHasParentSampleCount((parentSamples != null && parentSamples.size() > 0)?1:0);
                 hrdp.setHasChildSampleCount(childSamplesExist?1:0);
                 hrdp.setHasPhenominer(hasPhenominer?1:0);
                 hrdp.setHasVariantVisualizer(hasVariantVisualizer?1:0);
-                hrdp.setAvailableStrainId(availableIdString);
-                hrdp.setAvailableStrainSymbol(availableStrainSymbols);
+                hrdp.setAvailableStrainId(nullIfEmpty(availableIdString));
+                hrdp.setAvailableStrainSymbol(nullIfEmpty(availableStrainSymbols));
 
                 boolean checkStrainExists = dao.checkStrainExists(str.getRgdId(),subGroupName);
                 if(checkStrainExists){
@@ -228,6 +230,10 @@ public class HrdpPortalManager {
             }
 
         }
+    }
+
+    private static String nullIfEmpty(String s) {
+        return s == null || s.isEmpty() ? null : s;
     }
 
     public String getVersion() {
